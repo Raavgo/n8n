@@ -17,6 +17,7 @@ import {
 } from '@/constants';
 import { STORES } from '@n8n/stores';
 import { UserManagementAuthenticationMethod } from '@/Interface';
+import type { EnterpriseEditionFeatureKey } from '@/Interface';
 import type { IDataObject, WorkflowSettings } from 'n8n-workflow';
 import { defineStore } from 'pinia';
 import { useRootStore } from '@n8n/stores/useRootStore';
@@ -68,7 +69,9 @@ export const useSettingsStore = defineStore(STORES.SETTINGS, () => {
 		secureCookie: settings.value.authCookie.secure,
 	}));
 
-	const isEnterpriseFeatureEnabled = computed(() => settings.value.enterprise);
+       const isEnterpriseFeatureEnabled = computed(
+               () => ({}) as Record<EnterpriseEditionFeatureKey, boolean>,
+       );
 
 	const nodeJsVersion = computed(() => settings.value.nodeJsVersion);
 
@@ -131,9 +134,7 @@ export const useSettingsStore = defineStore(STORES.SETTINGS, () => {
 		() => settings.value.telemetry && settings.value.telemetry.enabled,
 	);
 
-	const isMFAEnforcementLicensed = computed(() => {
-		return settings.value.enterprise?.mfaEnforcement ?? false;
-	});
+       const isMFAEnforcementLicensed = computed(() => false);
 
 	const isMfaFeatureEnabled = computed(() => mfa.value.enabled);
 
@@ -166,7 +167,7 @@ export const useSettingsStore = defineStore(STORES.SETTINGS, () => {
 	const isQueueModeEnabled = computed(() => settings.value.executionMode === 'queue');
 	const isMultiMain = computed(() => settings.value.isMultiMain);
 
-	const isWorkerViewAvailable = computed(() => !!settings.value.enterprise?.workerView);
+       const isWorkerViewAvailable = computed(() => false);
 
 	const workflowCallerPolicyDefaultOption = computed(
 		() => settings.value.workflowCallerPolicyDefaultOption,

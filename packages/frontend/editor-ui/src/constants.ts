@@ -643,27 +643,10 @@ export const enum WORKFLOW_MENU_ACTIONS {
 /**
  * Enterprise edition
  */
-export const EnterpriseEditionFeature: Record<
-	EnterpriseEditionFeatureKey,
-	EnterpriseEditionFeatureValue
-> = {
-	AdvancedExecutionFilters: 'advancedExecutionFilters',
-	Sharing: 'sharing',
-	Ldap: 'ldap',
-	LogStreaming: 'logStreaming',
-	Variables: 'variables',
-	Saml: 'saml',
-	Oidc: 'oidc',
-	EnforceMFA: 'mfaEnforcement',
-	SourceControl: 'sourceControl',
-	ExternalSecrets: 'externalSecrets',
-	AuditLogs: 'auditLogs',
-	DebugInEditor: 'debugInEditor',
-	WorkflowHistory: 'workflowHistory',
-	WorkerView: 'workerView',
-	AdvancedPermissions: 'advancedPermissions',
-	ApiKeyScopes: 'apiKeyScopes',
-};
+export const EnterpriseEditionFeature = {} as Record<
+       EnterpriseEditionFeatureKey,
+       EnterpriseEditionFeatureValue
+>;
 
 export const MAIN_NODE_PANEL_WIDTH = 390;
 
